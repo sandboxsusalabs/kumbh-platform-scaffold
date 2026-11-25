@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Local data
+*.db
+*.sqlite3
+backend/test_kumbh.db
+backend/kumbh_dev.db
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Node (front-end tooling, if added)
+node_modules/
+package-lock.json
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Build output
+dist/
+build/

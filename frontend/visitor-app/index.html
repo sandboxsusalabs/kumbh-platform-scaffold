@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#101a3a" />
+<title>Kumbh Sahayak — Haridwar Kumbh Mela</title>
+<link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-register" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l9.5 17H2.5z"/><path d="M12 9v5M12 17h.01"/></symbol>
+  <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 10.5a6 6 0 11-12 0C6 9.5 12 3 12 3z"/></symbol>
+  <symbol id="i-toilet" viewBox="0 0 24 24"><circle cx="7" cy="4.5" r="2"/><circle cx="17" cy="4.5" r="2"/><path d="M5 8h4v13M15 8h4v13M5 12h4M15 12h4"/></symbol>
+  <symbol id="i-medical" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M9 6V4h6v2M12 10v6M9 13h6"/></symbol>
+  <symbol id="i-police" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.6 8.2-8 9-4.4-.8-8-4-8-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><path d="M5 3v8a3 3 0 006 0V3M8 11v10"/><path d="M16 3c2 1.5 3 4 3 7s-1 4-3 4v7"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 10h16M8 21v-2M16 21v-2"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></symbol>
+  <symbol id="i-stay" viewBox="0 0 24 24"><path d="M3 20V9l9-5 9 5v11"/><path d="M9 20v-6h6v6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></symbol>
+  <symbol id="i-crowd" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M11 20c0-3 2.2-5 5-5s5 2 5 5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></symbol>
+  <symbol id="i-lost" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 4l2 2-2 2"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v3M14 20h3M20 20h1"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9a4 4 0 010 6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-sos" viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 9v4M12 16h.01"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></symbol>
+  <symbol id="i-helpline" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M11 12h1v5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M6 17V9a3 3 0 013-3h3a3 3 0 003 3v5a3 3 0 003 3"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h10l-1 4 1 4H5"/></symbol>
+</svg>
+
+<div id="app">
+  <header class="topbar">
+    <div class="status-strip" id="statusStrip" role="status" aria-live="polite">
+      <span class="dot" id="stripDot"></span>
+      <span id="stripText">—</span>
+      <span class="strip-right" id="stripRight">—</span>
+    </div>
+    <div class="topbar-row">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">ॐ</span>
+        <div>
+          <div class="brand-name" id="appName">कुंभ सहायक</div>
+          <div class="brand-sub" id="appSub">हरिद्वार कुंभ मेला</div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="voiceBtn" title="Listen" aria-label="Listen to this screen">
+          <svg class="ico"><use href="#i-volume"/></svg>
+        </button>
+        <button class="lang-btn" id="langBtn" aria-label="Change language">हिं</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ---------------------------------------------------------- HOME -->
+    <section class="screen is-active" id="screen-home">
+      <div class="banner card">
+        <div class="banner-text">
+          <div class="banner-greet" id="greeting">—</div>
+          <div class="banner-date" id="today">—</div>
+        </div>
+        <div class="banner-badge" id="dayBadge">—</div>
+      </div>
+
+      <div id="pinnedAlerts"></div>
+
+      <div class="ticker card" id="ticker" hidden>
+        <span class="ticker-label" id="tickerLabel">सूचना</span>
+        <div class="ticker-track"><div class="ticker-inner" id="tickerText"></div></div>
+      </div>
+
+      <h2 class="section-title" id="quickTitle">सेवाएँ</h2>
+      <div class="tile-grid" id="tileGrid"></div>
+
+      <h2 class="section-title" id="snanTitle">आज का स्नान</h2>
+      <div class="card list" id="snanList"></div>
+
+      <h2 class="section-title" id="crowdTitle">घाट पर भीड़</h2>
+      <div class="card list" id="crowdList"></div>
+
+      <div class="card weather" id="weatherCard"></div>
+      <footer class="build-stamp" id="buildStamp">—</footer>
+    </section>
+
+    <!-- ----------------------------------------------- LOST PERSON REPORTING -->
+    <section class="screen" id="screen-lost">
+      <div id="lostPage"></div>
+    </section>
+
+    <section class="screen" id="screen-reports">
+      <div id="reportsPage"></div>
+    </section>
+
+    <section class="screen" id="screen-transport">
+      <div id="transportPage"></div>
+    </section>
+
+    <section class="screen" id="screen-stay">
+      <div id="stayPage"></div>
+    </section>
+
+    <!-- ----------------------------------------------------------- MAP -->
+    <section class="screen" id="screen-map">
+      <h1 class="screen-title" id="mapTitle">नक्शा</h1>
+      <div class="chips" id="mapChips"></div>
+      <div class="card map-panel">
+        <div class="map-panel-head">
+          <svg class="ico"><use href="#i-map"/></svg>
+          <div>
+            <div class="map-panel-title" id="mapPanelTitle">—</div>
+            <div class="map-panel-sub" id="mapPanelSub">—</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" id="offlineBtn">—</button>
+      </div>
+      <div class="card list" id="nearbyList"></div>
+      <p class="hint" id="mapHint"></p>
+    </section>
+
+    <!-- -------------------------------------------------------- ALERTS -->
+    <section class="screen" id="screen-alerts">
+      <h1 class="screen-title" id="alertsTitle">सूचनाएँ</h1>
+      <div id="alertList" class="stack"></div>
+    </section>
+
+    <!-- ------------------------------------------------------------ ID -->
+    <section class="screen" id="screen-id">
+      <h1 class="screen-title" id="idTitle">मेरा परिचय पत्र</h1>
+      <div id="idBody"></div>
+    </section>
+
+    <!-- ---------------------------------------------------------- HELP -->
+    <section class="screen" id="screen-help">
+      <h1 class="screen-title" id="helpTitle">सहायता</h1>
+      <div class="card list" id="helpList"></div>
+      <div class="card help-note">
+        <div class="help-note-title" id="helpNoteTitle">—</div>
+        <p id="helpNoteBody">—</p>
+      </div>
+      <footer class="build-stamp" id="buildStamp2">—</footer>
+    </section>
+  </main>
+
+  <button class="sos-fab" id="sosFab" aria-label="Emergency SOS">
+    <svg class="ico"><use href="#i-sos"/></svg>
+    <span id="sosLabel">SOS</span>
+  </button>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tab is-active" data-screen="home"><svg class="ico"><use href="#i-home"/></svg><span id="navHome">होम</span></button>
+    <button class="tab" data-screen="map"><svg class="ico"><use href="#i-map"/></svg><span id="navMap">नक्शा</span></button>
+    <button class="tab" data-screen="alerts"><svg class="ico"><use href="#i-alert"/></svg><span id="navAlerts">सूचना</span></button>
+    <button class="tab" data-screen="id"><svg class="ico"><use href="#i-qr"/></svg><span id="navId">पहचान</span></button>
+    <button class="tab" data-screen="help"><svg class="ico"><use href="#i-helpline"/></svg><span id="navHelp">सहायता</span></button>
+  </nav>
+
+  <!-- SOS sheet -->
+  <div class="sheet-backdrop" id="sosBackdrop" hidden></div>
+  <div class="sheet" id="sosSheet" role="dialog" aria-modal="true" hidden>
+    <div class="sheet-grip"></div>
+    <h2 id="sosSheetTitle">आपातकाल</h2>
+    <p class="sheet-sub" id="sosSheetSub">—</p>
+    <div class="sos-grid" id="sosCategories"></div>
+    <button class="btn btn-danger btn-xl" id="sosConfirm">—</button>
+    <label class="silent-row">
+      <input type="checkbox" id="sosSilent" />
+      <span id="sosSilentLabel">—</span>
+    </label>
+    <button class="btn btn-plain" id="sosCancel">—</button>
+  </div>
+
+  <!-- language sheet -->
+  <div class="sheet-backdrop" id="langBackdrop" hidden></div>
+  <div class="sheet" id="langSheet" role="dialog" aria-modal="true" hidden>
+    <div class="sheet-grip"></div>
+    <h2 id="langTitle">भाषा</h2>
+    <div class="lang-grid" id="langGrid"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script src="i18n.js?v=2"></script>
+<script src="api.js?v=3"></script>
+<script src="app.js?v=3"></script>
+</body>
+</html>
