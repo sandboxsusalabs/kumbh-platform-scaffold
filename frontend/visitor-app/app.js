@@ -367,6 +367,7 @@
         <div class="row-body">
           <div class="row-title">${esc(zone.name)}</div>
           <div class="row-sub">${Math.round((zone.occupancy_ratio || 0) * 100)}% ${esc(t("crowd." + zone.level))}${zone.one_way_flow ? " · " + (zone.one_way_flow === "inward" ? "→" : "←") : ""}</div>
+          <div class="crowd-progress" role="img" aria-label="${Math.round((zone.occupancy_ratio || 0) * 100)}%" style="--crowd-fill:${Math.max(0, Math.min(100, Math.round((zone.occupancy_ratio || 0) * 100)))}%"><span></span></div>
         </div>
         <span class="level ${esc(zone.level)}"><span class="dot"></span>${esc(t("crowd." + zone.level))}</span>
       </div>`,
@@ -486,7 +487,7 @@
     switchScreen("transport");
     document.body.classList.add("transport-mode");
     const page = document.getElementById("transportPage");
-    page.innerHTML = `<div class="transport-header"><h1>${esc(t("transport.title"))}</h1><button type="button" class="btn btn-ghost" id="transportBack">${esc(t("transport.back"))}</button></div><div id="transportContent" aria-live="polite"><p class="transport-state">${esc(t("transport.loading"))}</p></div>`;
+    page.innerHTML = `<div class="transport-header"><h1>${esc(t("transport.title"))}</h1><button type="button" class="btn btn-ghost" id="transportBack">${esc(t("transport.back"))}</button></div><div id="transportContent" aria-live="polite"><p class="transport-state loading-state">${esc(t("transport.loading"))}</p></div>`;
     document
       .getElementById("transportBack")
       .addEventListener("click", () => switchScreen("home"));
@@ -509,7 +510,8 @@
       content.innerHTML = `<div class="transport-grid">${layers
         .map((layer, index) => {
           const items = rows[index];
-          return `<section class="transport-section"><h2>${esc(t(layer.title))}</h2>${
+          const sectionIcon = layer.key === "bus_stands" ? "i-bus" : layer.key === "railway" ? "i-route" : "i-pin";
+          return `<section class="transport-section"><h2><svg class="ico section-icon" aria-hidden="true"><use href="#${sectionIcon}"/></svg>${esc(t(layer.title))}</h2>${
             items.length
               ? items
                   .map((item) => {
@@ -566,7 +568,7 @@
     switchScreen("stay");
     document.body.classList.add("stay-mode");
     const page = document.getElementById("stayPage");
-    page.innerHTML = `<div class="stay-header"><h1>${esc(t("stay.title"))}</h1><button type="button" class="btn btn-ghost" id="stayBack">${esc(t("stay.back"))}</button></div><div id="stayContent" aria-live="polite"><p class="stay-state">${esc(t("stay.loading"))}</p></div>`;
+    page.innerHTML = `<div class="stay-header"><h1>${esc(t("stay.title"))}</h1><button type="button" class="btn btn-ghost" id="stayBack">${esc(t("stay.back"))}</button></div><div id="stayContent" aria-live="polite"><p class="stay-state loading-state">${esc(t("stay.loading"))}</p></div>`;
     document
       .getElementById("stayBack")
       .addEventListener("click", () => switchScreen("home"));
@@ -584,22 +586,22 @@
       if (!content) return;
       const sections = [
         {
-          title: "stay.camps",
+          title: "stay.camps", icon: "i-stay",
           items: accommodation.filter((item) => item.category === "camp"),
         },
         {
-          title: "stay.dharamshalas",
+          title: "stay.dharamshalas", icon: "i-stay",
           items: accommodation.filter(
             (item) => item.category === "accommodation",
           ),
         },
         {
-          title: "stay.hotels",
+          title: "stay.hotels", icon: "i-stay",
           items: accommodation.filter(
             (item) => !["camp", "accommodation"].includes(item.category),
           ),
         },
-        { title: "stay.helpDesks", items: helpDesks },
+        { title: "stay.helpDesks", icon: "i-helpline", items: helpDesks },
       ];
       const renderItem = (item) => {
         const statusKey = ["open", "closed", "full", "crowded"].includes(
@@ -621,7 +623,7 @@
         if (item.opening_hours) details.push(item.opening_hours);
         return `<article class="stay-item"><div class="stay-item-head"><h3>${esc(item.name)}</h3><span class="stay-status status-${esc(statusKey)}">${esc(t("stay.status." + statusKey))}</span></div><p>${esc(details.join(" · ") || "—")}</p></article>`;
       };
-      content.innerHTML = `<div class="stay-grid">${sections.map((section) => `<section class="stay-section"><h2>${esc(t(section.title))}</h2>${section.items.length ? section.items.map(renderItem).join("") : `<p class="stay-empty">${esc(t("stay.empty"))}</p>`}</section>`).join("")}</div><aside class="stay-info"><strong>${esc(t("stay.info"))}</strong> <a href="tel:112">112</a></aside>`;
+      content.innerHTML = `<div class="stay-grid">${sections.map((section) => `<section class="stay-section"><h2><svg class="ico section-icon" aria-hidden="true"><use href="#${section.icon}"/></svg>${esc(t(section.title))}</h2>${section.items.length ? section.items.map(renderItem).join("") : `<p class="stay-empty">${esc(t("stay.empty"))}</p>`}</section>`).join("")}</div><aside class="stay-info"><strong>${esc(t("stay.info"))}</strong> <a href="tel:112">112</a></aside>`;
     } catch (_) {
       const content = document.getElementById("stayContent");
       if (content)
@@ -1530,7 +1532,7 @@
   async function loadReports() {
     const content = document.getElementById("reportsContent");
     if (!content) return;
-    content.innerHTML = `<p class="report-message">${esc(reportT("loading"))}</p>`;
+    content.innerHTML = `<p class="report-message loading-state">${esc(reportT("loading"))}</p>`;
     const params = Object.assign({}, reportFilters, {
       page: reportPage,
       page_size: 20,
@@ -1555,7 +1557,7 @@
         reportT("status"),
         reportT("reported"),
       ];
-      content.innerHTML = `<div class="report-table-wrap"><table class="report-table"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${result.items.map((r) => `<tr tabindex="0" data-case="${esc(r.id)}"><td>${esc(r.case_no)}</td><td>${esc(r.subject_name)}</td><td>${esc(r.subject_age == null ? "—" : r.subject_age)}</td><td>${esc(r.subject_gender || "—")}</td><td>${esc(r.last_seen_place || "—")}</td><td>${esc(formatReportDate(r.last_seen_at))}</td><td><span class="status-badge status-${esc(r.status)}">${esc(reportStatus(r.status))}</span></td><td>${esc(formatReportDate(r.created_at))}</td></tr>`).join("")}</tbody></table></div><div class="report-pagination"><button class="btn btn-ghost" id="reportPrev" ${reportPage <= 1 ? "disabled" : ""}>${esc(reportT("previous"))}</button><span>${reportPage} ${esc(reportT("of"))} ${Math.max(1, Math.ceil(reportTotal / 20))}</span><button class="btn btn-ghost" id="reportNext" ${reportPage * 20 >= reportTotal ? "disabled" : ""}>${esc(reportT("next"))}</button></div>`;
+      content.innerHTML = `<div class="report-table-wrap"><table class="report-table"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${result.items.map((r) => `<tr tabindex="0" data-case="${esc(r.id)}"><td data-label="${esc(cols[0])}">${esc(r.case_no)}</td><td data-label="${esc(cols[1])}">${esc(r.subject_name)}</td><td data-label="${esc(cols[2])}">${esc(r.subject_age == null ? "—" : r.subject_age)}</td><td data-label="${esc(cols[3])}">${esc(r.subject_gender || "—")}</td><td data-label="${esc(cols[4])}">${esc(r.last_seen_place || "—")}</td><td data-label="${esc(cols[5])}">${esc(formatReportDate(r.last_seen_at))}</td><td data-label="${esc(cols[6])}"><span class="status-badge status-${esc(r.status)}">${esc(reportStatus(r.status))}</span></td><td data-label="${esc(cols[7])}">${esc(formatReportDate(r.created_at))}</td></tr>`).join("")}</tbody></table></div><div class="report-pagination"><button class="btn btn-ghost" id="reportPrev" ${reportPage <= 1 ? "disabled" : ""}>${esc(reportT("previous"))}</button><span>${reportPage} ${esc(reportT("of"))} ${Math.max(1, Math.ceil(reportTotal / 20))}</span><button class="btn btn-ghost" id="reportNext" ${reportPage * 20 >= reportTotal ? "disabled" : ""}>${esc(reportT("next"))}</button></div>`;
       content.querySelectorAll("[data-case]").forEach((row) => {
         const open = () => {
           reportSelected = row.dataset.case;
@@ -1587,7 +1589,7 @@
   async function loadReportDetail(id) {
     const content = document.getElementById("reportsContent");
     if (!content) return;
-    content.innerHTML = `<p class="report-message">${esc(reportT("loading"))}</p>`;
+    content.innerHTML = `<p class="report-message loading-state">${esc(reportT("loading"))}</p>`;
     try {
       const r = await API.lostReport(id);
       const noted = (r.description || "").match(/Additional notes:\s*(.*)$/i);
